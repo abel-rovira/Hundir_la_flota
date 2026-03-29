@@ -26,10 +26,12 @@ public class EstadoJuego extends Writable implements Serializable {
     private int barcoActualIndex;
     private boolean colocandoBarcos;
 
+    public static final int[] BARCOS_POR_DEFECTO = {5, 4, 3, 3, 2};
+
     public EstadoJuego() {
         this.historialDisparos = new ArrayList<>();
         this.historialDisparosCPU = new ArrayList<>();
-        this.barcos = new int[]{5, 4, 3, 3, 2};
+        this.barcos = BARCOS_POR_DEFECTO;
         this.celdasOcupadas = new boolean[10][10];
         this.ultimoDisparoJugador = new ArrayList<>();
         this.ultimoDisparoCPU = new ArrayList<>();
@@ -172,4 +174,5 @@ public class EstadoJuego extends Writable implements Serializable {
     public void setColocandoBarcos(boolean colocandoBarcos) {
         this.colocandoBarcos = colocandoBarcos;
     }
-}
+} 
+
