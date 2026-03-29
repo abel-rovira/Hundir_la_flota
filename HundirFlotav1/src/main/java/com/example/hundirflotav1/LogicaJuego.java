@@ -74,7 +74,9 @@ public class LogicaJuego {
 
     private boolean colocarBarco(char[][] tablero, int longitud, int fila, int columna, int orientacion) {
         if (orientacion == 0) {
-            if (columna + longitud > 10) return false;
+            if (columna + longitud > 10){
+                return false;
+            }
             for (int j = columna; j < columna + longitud; j++) {
                 if (tablero[fila][j] != '~') return false;
             }
@@ -82,7 +84,9 @@ public class LogicaJuego {
                 tablero[fila][j] = 'B';
             }
         } else {
-            if (fila + longitud > 10) return false;
+            if (fila + longitud > 10){
+                return false;
+            }
             for (int i = fila; i < fila + longitud; i++) {
                 if (tablero[i][columna] != '~') return false;
             }
@@ -137,35 +141,36 @@ public class LogicaJuego {
 
         if (estado.getBarcoActualIndex() >= estado.getBarcos().length) {
             estado.setColocandoBarcos(false);
-            return "Barcos colocados. Empieza el juego";
+            return "Todos los barcos colocados, empieza el juego";
         }
 
-        return "Barco colocado. Siguiente barco de " + estado.getBarcos()[estado.getBarcoActualIndex()] + " casillas";
+        return "Barco colocado, el siguiente barco es de " + estado.getBarcos()[estado.getBarcoActualIndex()] + " casillas";
     }
 
     public String disparoJugador(int fila, int columna) {
         if (estado.isJuegoTerminado()) return "El juego ya termino";
         if (estado.isColocandoBarcos()) return "Primero coloca todos tus barcos";
+
         if (estado.getTableroDisparosJugador()[fila][columna] == 'X' ||
                 estado.getTableroDisparosJugador()[fila][columna] == '-') {
             return "Ya disparaste ahi";
         }
 
-        String coordenada = "" + (char)('A' + fila) + (columna + 1);
-        String registro;
+        String coord = (char)('A' + fila) + "" + (columna + 1);
+        String registro = "Jugador:    " + coord + ": ";
 
         if (estado.getTableroPC()[fila][columna] == 'B') {
             estado.getTableroDisparosJugador()[fila][columna] = 'X';
             estado.getTableroPC()[fila][columna] = 'X';
             estado.setImpactosJugador(estado.getImpactosJugador() + 1);
 
-            registro = "JUGADOR " + coordenada + " IMPACTO";
+            registro += "IMPACTO";
             estado.getUltimoDisparoJugador().add(new int[]{fila, columna, 1});
         } else {
             estado.getTableroDisparosJugador()[fila][columna] = '-';
             estado.getTableroPC()[fila][columna] = '-';
 
-            registro = "JUGADOR " + coordenada + " AGUA";
+            registro += "AGUA";
             estado.getUltimoDisparoJugador().add(new int[]{fila, columna, 0});
         }
 
@@ -174,14 +179,16 @@ public class LogicaJuego {
         if (estado.getImpactosJugador() >= estado.getTotalCeldas()) {
             estado.setJuegoTerminado(true);
             estado.setGanador("Jugador");
-            return "GANASTE. Hundiste todos los barcos";
+            return "HAS GANADO LA PARTIDA!!!!";
         }
 
         return registro;
     }
 
     public String disparoCPU() {
-        if (estado.isJuegoTerminado()) return "El juego ya termino";
+        if (estado.isJuegoTerminado()){
+            return "El juego ya ha terminado";
+        }
 
         int fila, columna;
         boolean valido = false;
@@ -190,21 +197,25 @@ public class LogicaJuego {
             fila = (int)(Math.random() * 10);
             columna = (int)(Math.random() * 10);
 
-            if (estado.getTableroDisparosPC()[fila][columna] != 'X' &&
-                    estado.getTableroDisparosPC()[fila][columna] != '-') {
+            if (estado.getTableroDisparosPC()[fila][columna] != 'X' && estado.getTableroDisparosPC()[fila][columna] != '-') {
+
                 valido = true;
-                String registro = "CPU disparo a " + (char)('A' + fila) + columna + ": ";
+
+                String coord = (char)('A' + fila) + "" + (columna + 1);
+                String registro = "CPU:   " + coord + ": ";
 
                 if (estado.getTableroJugador()[fila][columna] == 'B') {
                     estado.getTableroDisparosPC()[fila][columna] = 'X';
                     estado.getTableroJugador()[fila][columna] = 'X';
                     estado.setImpactosPC(estado.getImpactosPC() + 1);
-                    registro = registro + "IMPACTO";
+
+                    registro += "IMPACTO";
                     estado.getUltimoDisparoCPU().add(new int[]{fila, columna, 1});
                 } else {
                     estado.getTableroDisparosPC()[fila][columna] = '-';
                     estado.getTableroJugador()[fila][columna] = '-';
-                    registro = registro + "AGUA";
+
+                    registro += "AGUA";
                     estado.getUltimoDisparoCPU().add(new int[]{fila, columna, 0});
                 }
 
@@ -213,7 +224,7 @@ public class LogicaJuego {
                 if (estado.getImpactosPC() >= estado.getTotalCeldas()) {
                     estado.setJuegoTerminado(true);
                     estado.setGanador("CPU");
-                    return "PERDISTE. La CPU hundio todos tus barcos";
+                    return "Has perdido la CPU ha hundido todos tus barcos!!!!";
                 }
 
                 return registro;
