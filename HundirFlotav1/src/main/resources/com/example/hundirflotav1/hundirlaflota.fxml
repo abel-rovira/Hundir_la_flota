@@ -97,7 +97,7 @@
          </children>
       </VBox>
       <Label layoutX="147.0" layoutY="68.0" text="TABLERO JUGADOR" />
-      <Label fx:id="labelError" layoutX="90.0" layoutY="330.0" text="" textFill="red" translateX="1.0" translateY="8.0">
+      <Label fx:id="labelError" layoutX="90.0" layoutY="330.0" text="" textFill="red" translateX="7.0" translateY="2.0">
          <font>
             <Font size="14.0" />
          </font></Label>
