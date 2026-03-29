@@ -41,9 +41,9 @@ resources/
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a8d10ad1-b0ad-4a63-be54-7a60947a8107"  width="660" height="583" alt="Tablero principal" width="600"/>
 </p>
-### Tabla de resultados
+
+### TABLERO DE RESULTADOS
 <p align="center">
-  <img src="screenshots/resultados.png" alt="Tabla de resultados" width="500"/>
   <img width="662" height="583" alt="Tabla de resultados" src="https://github.com/user-attachments/assets/a2a5ff79-aed8-4122-b021-df3eb72245cf" />   
 </p>
 
