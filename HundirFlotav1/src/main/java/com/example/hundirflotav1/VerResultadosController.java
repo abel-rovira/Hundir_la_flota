@@ -13,10 +13,8 @@ public class VerResultadosController {
 
     @FXML
     private TableColumn<VerResultados, Integer> colVidaJugador;
-
     @FXML
     private TableColumn<VerResultados, Integer> colVidaCPU;
-
     @FXML
     private TableColumn<VerResultados, String> colGanador;
 
@@ -30,4 +28,5 @@ public class VerResultadosController {
     public void setListaResultados(ObservableList<VerResultados> resultados) {
         tableResultados.setItems(resultados);
     }
+
 }
