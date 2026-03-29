@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hundirflotav1.VerResultadosController">
+    <children>
+        <TableView fx:id="tableResultados" layoutX="51.0" layoutY="85.0" prefHeight="270.0" prefWidth="496.0">
+            <columns>
+                <TableColumn fx:id="colVidaJugador" prefWidth="148.90306091308594" text="Vidas jugador" />
+                <TableColumn fx:id="colVidaCPU" prefWidth="177.8841781616211" text="Vidas CPU" />
+                <TableColumn fx:id="colGanador" prefWidth="169.88937377929688" text="Ganador" />
+            </columns>
+        </TableView>
+        <Label layoutX="217.0" layoutY="28.0" text="RESULTADOS">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
