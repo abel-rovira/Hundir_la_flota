@@ -39,7 +39,7 @@ resources/
 
 ### TABLERO
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a8d10ad1-b0ad-4a63-be54-7a60947a8107"  width="660" height="583" alt="Tablero principal" width="600"/>
+  <img src="https://github.com/user-attachments/assets/d015355e-b9ee-4878-a48c-5892fba2165c"  width="660" height="583" alt="Tablero principal" width="600"/>
 </p>
 
 ### TABLERO DE RESULTADOS
