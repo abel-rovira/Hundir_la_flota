@@ -26,10 +26,11 @@ public class JuegoController {
 
     private int orientacionActual;
     private boolean colocandoBarcos;
-    private int barcoActualIndex;
+    private int barcoActualCont;
     private int[] tamanosBarcos;
 
-    private ListView<String> historialDisparos; // ✅ USAMOS EL DEL FXML
+    private ListView<String> historialDisparos;
+    private boolean resultadoGuardado = false;
 
     public JuegoController(GridPane tableroJugador, GridPane tableroEnemigo) {
         this.tableroJugadorGrid = tableroJugador;
@@ -43,16 +44,18 @@ public class JuegoController {
         this.orientacionActual = 0;
         this.colocandoBarcos = true;
         this.tamanosBarcos = new int[]{5, 4, 3, 3, 2};
-        this.barcoActualIndex = 0;
+        this.barcoActualCont = 0;
 
         inicializarInterfaz();
         nuevaPartida();
     }
 
-    // 🔥 MÉTODO PARA CONECTAR EL LISTVIEW DEL FXML
     public void setHistorialDisparos(ListView<String> historial) {
         this.historialDisparos = historial;
-        this.historialDisparos.setItems(listaRegistro);
+
+        if (this.historialDisparos != null) {
+            this.historialDisparos.setItems(listaRegistro);
+        }
     }
 
     private void inicializarInterfaz() {
@@ -65,10 +68,13 @@ public class JuegoController {
         dibujarTableroEnemigo();
     }
 
+    public void setLabelError(Label label) {
+        this.etiquetaError = label;
+    }
+
     private void dibujarTableroJugador() {
         for (int fila = 0; fila < 10; fila++) {
             for (int columna = 0; columna < 10; columna++) {
-
                 Button celda = new Button();
                 celda.setMinSize(20, 20);
 
@@ -80,6 +86,16 @@ public class JuegoController {
                 botonesJugador[fila][columna] = celda;
                 tableroJugadorGrid.add(celda, columna, fila);
             }
+        }
+    }
+
+    public void cambiarOrientacion() {
+        orientacionActual = (orientacionActual == 0) ? 1 : 0;
+
+        if (orientacionActual == 0) {
+            listaRegistro.add(0, "Barcos en horizontal");
+        } else {
+            listaRegistro.add(0, "Barcos en vertical");
         }
     }
 
@@ -102,17 +118,19 @@ public class JuegoController {
     }
 
     private void alHacerClickEnTableroJugador(int fila, int columna) {
-
         if (colocandoBarcos) {
-
             String resultado = logicaJuego.colocarBarcoJugador(fila, columna, orientacionActual);
-
-            listaRegistro.add(0, resultado);
-
-            if (!resultado.contains("Error")) {
-                barcoActualIndex++;
-
-                if (barcoActualIndex >= tamanosBarcos.length) {
+            if (resultado.contains("sale") || resultado.contains("Hay otro")) {
+                if (etiquetaError != null) {
+                    etiquetaError.setText(resultado);
+                }
+            } else {
+                if (etiquetaError != null) {
+                    etiquetaError.setText("");
+                }
+                listaRegistro.add(0, resultado);
+                barcoActualCont++;
+                if (barcoActualCont >= tamanosBarcos.length) {
                     colocandoBarcos = false;
                 }
             }
@@ -121,11 +139,13 @@ public class JuegoController {
         }
     }
 
+
     private void alHacerClickEnTableroEnemigo(int fila, int columna) {
-
         if (!colocandoBarcos && !logicaJuego.getEstado().isJuegoTerminado()) {
-
             String r1 = logicaJuego.disparoJugador(fila, columna);
+            if (r1.equals("Ya disparaste ahi")){
+                return;
+            }
             listaRegistro.add(0, r1);
 
             if (!logicaJuego.getEstado().isJuegoTerminado()) {
@@ -135,36 +155,56 @@ public class JuegoController {
 
             actualizarTableroJugador();
             actualizarTableroEnemigo();
+
+            if (logicaJuego.getEstado().isJuegoTerminado() && !resultadoGuardado) {
+                int vidasJ = logicaJuego.calcularVidasJugador();
+                int vidasCPU = logicaJuego.calcularVidasCPU();
+                String ganador = logicaJuego.getEstado().getGanador();
+                ResultadosController.agregarResultado(vidasJ, vidasCPU, ganador);
+
+                resultadoGuardado = true;
+            }
         }
     }
 
     private void actualizarTableroJugador() {
-
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
 
                 char v = logicaJuego.getEstado().getTableroJugador()[i][j];
                 Button b = botonesJugador[i][j];
 
-                if (v == 'B') b.setStyle("-fx-background-color: green;");
-                else if (v == 'X') b.setStyle("-fx-background-color: red;");
-                else if (v == '-') b.setStyle("-fx-background-color: gray;");
-                else b.setStyle("-fx-background-color: lightblue;");
+                if (v == 'B'){
+                    b.setStyle("-fx-background-color: green;");
+                }
+                else if (v == 'X'){
+                    b.setStyle("-fx-background-color: red;");
+                }
+                else if (v == '-'){
+                    b.setStyle("-fx-background-color: gray;");
+                }
+                else {
+                    b.setStyle("-fx-background-color: lightblue;");
+                }
             }
         }
     }
 
     private void actualizarTableroEnemigo() {
-
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-
                 char v = logicaJuego.getEstado().getTableroDisparosJugador()[i][j];
                 Button b = botonesEnemigo[i][j];
 
-                if (v == 'X') b.setStyle("-fx-background-color: red;");
-                else if (v == '-') b.setStyle("-fx-background-color: gray;");
-                else b.setStyle("-fx-background-color: lightcoral;");
+                if (v == 'X'){
+                    b.setStyle("-fx-background-color: red;");
+                }
+                else if (v == '-'){
+                    b.setStyle("-fx-background-color: gray;");
+                }
+                else {
+                    b.setStyle("-fx-background-color: lightcoral;");
+                }
             }
         }
     }
@@ -172,8 +212,9 @@ public class JuegoController {
     public void nuevaPartida() {
         logicaJuego = new LogicaJuego();
         colocandoBarcos = true;
-        barcoActualIndex = 0;
+        barcoActualCont = 0;
         listaRegistro.clear();
+        resultadoGuardado = false;
         actualizarTableroJugador();
         actualizarTableroEnemigo();
     }
@@ -194,7 +235,19 @@ public class JuegoController {
     }
 
     public void deshacerTurno() {
+        if (logicaJuego.getEstado().getUltimoDisparoJugador().isEmpty() || logicaJuego.getEstado().getUltimoDisparoCPU().isEmpty()) {
+            return;
+        }
+
         logicaJuego.deshacerUltimoTurno();
+
+        if (!listaRegistro.isEmpty()){
+            listaRegistro.remove(0);
+        }
+        if (!listaRegistro.isEmpty()){
+            listaRegistro.remove(0);
+        }
+
         actualizarTableroJugador();
         actualizarTableroEnemigo();
     }
