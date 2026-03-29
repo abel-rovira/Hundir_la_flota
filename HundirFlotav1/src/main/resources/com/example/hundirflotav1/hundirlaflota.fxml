@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -12,13 +11,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="520.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hundirflotav1.HelloController">
+<AnchorPane prefHeight="565.0" prefWidth="666.0" style="-fx-background-color: #a8d8ff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hundirflotav1.HelloController">
    <children>
-      <VBox layoutX="90.0" layoutY="102.0" prefHeight="220.0" prefWidth="220.0" style="-fx-background-color: red;">
+      <VBox layoutX="90.0" layoutY="102.0" prefHeight="220.0" prefWidth="220.0" style="-fx-background-color: white;">
          <children>
-            <GridPane fx:id="tableroUno1" gridLinesVisible="true" prefHeight="222.0" prefWidth="231.0" style="-fx-background-color:transparent;">
+            <GridPane fx:id="tableroUno1" gridLinesVisible="true" prefHeight="220.0" prefWidth="202.0" style="-fx-background-color:transparent;">
                <columnConstraints>
                   <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                   <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
@@ -30,7 +30,7 @@
                   <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                   <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                   <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                  <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+                  <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
@@ -46,27 +46,7 @@
                   <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" />
                </rowConstraints>
                <children>
-                  <Text text="J" GridPane.columnIndex="0" />
-                  <Text text="I" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <Text text="H" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <Text text="G" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                  <Text text="F" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                  <Text text="E" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                  <Text text="D" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                  <Text text="C" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                  <Text text="B" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-                  <Text text="A" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-                  <Text text="1" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Text text="2" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                  <Text text="3" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-                  <Text text="4" GridPane.columnIndex="4" GridPane.rowIndex="10" />
-                  <Text text="5" GridPane.columnIndex="5" GridPane.rowIndex="10" />
-                  <Text text="6" GridPane.columnIndex="6" GridPane.rowIndex="10" />
-                  <Text text="7" GridPane.columnIndex="7" GridPane.rowIndex="10" />
-                  <Text text="8" GridPane.columnIndex="8" GridPane.rowIndex="10" />
-                  <Text text="9" GridPane.columnIndex="9" GridPane.rowIndex="10" />
-                  <Text text="10" GridPane.columnIndex="10" GridPane.rowIndex="10" />
-                  <GridPane fx:id="tableroUno" gridLinesVisible="false" prefHeight="200.0" prefWidth="190.0" style="-fx-background-color:white;" translateY="-90.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <GridPane fx:id="tableroUno" gridLinesVisible="false" prefHeight="200.0" prefWidth="167.0" style="-fx-background-color:white;" translateX="20.0" translateY="89.0">
                      <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
@@ -76,8 +56,8 @@
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                        <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="14.0" />
-                        <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="21.0" />
+                        <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+                        <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
@@ -91,17 +71,38 @@
                         <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
                         <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
                      </rowConstraints>
-                     <padding>
-                        <Insets left="15.0" right="15.0" />
-                     </padding>
                   </GridPane>
+                  <Text text="J" translateX="8.0" />
+                  <Text text="I" translateX="8.0" GridPane.rowIndex="1" />
+                  <Text text="H" translateX="6.0" GridPane.rowIndex="2" />
+                  <Text text="G" translateX="6.0" GridPane.rowIndex="3" />
+                  <Text text="F" translateX="7.0" GridPane.rowIndex="4" />
+                  <Text text="E" translateX="7.0" GridPane.rowIndex="5" />
+                  <Text text="D" translateX="6.0" GridPane.rowIndex="6" />
+                  <Text text="C" translateX="6.0" GridPane.rowIndex="7" />
+                  <Text text="B" translateX="7.0" GridPane.rowIndex="8" />
+                  <Text text="A" translateX="6.0" GridPane.rowIndex="9" />
+                  <Text text="1" translateX="6.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Text text="2" translateX="6.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <Text text="3" translateX="6.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                  <Text text="4" translateX="6.0" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                  <Text text="5" translateX="6.0" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                  <Text text="6" translateX="6.0" GridPane.columnIndex="6" GridPane.rowIndex="10" />
+                  <Text text="7" translateX="6.0" GridPane.columnIndex="7" GridPane.rowIndex="10" />
+                  <Text text="9" translateX="6.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
+                  <Text text="10" translateX="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
+                  <Text text="8" translateX="6.0" wrappingWidth="10.46875" GridPane.columnIndex="8" GridPane.rowIndex="10" />
                </children>
             </GridPane>
          </children>
       </VBox>
-      <Label layoutX="132.0" layoutY="68.0" text="TABLERO JUGADOR" />
+      <Label layoutX="147.0" layoutY="68.0" text="TABLERO JUGADOR" />
+      <Label fx:id="labelError" layoutX="90.0" layoutY="330.0" text="" textFill="red" translateX="1.0" translateY="8.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
       <Label layoutX="418.0" layoutY="68.0" text="TABLERO ENEMIGO" />
-      <VBox layoutX="354.0" layoutY="102.0" prefHeight="220.0" prefWidth="220.0" style="-fx-background-color: red;">
+      <VBox layoutX="354.0" layoutY="102.0" prefHeight="220.0" prefWidth="220.0" style="-fx-background-color: white;">
          <children>
             <GridPane fx:id="tableroDos" gridLinesVisible="true" prefHeight="222.0" prefWidth="231.0" style="-fx-background-color:transparent;">
                <columnConstraints>
@@ -131,29 +132,28 @@
                   <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" />
                </rowConstraints>
                <children>
-                  <Text text="J" GridPane.columnIndex="0" />
-                  <Text text="I" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <Text text="H" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <Text text="G" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                  <Text text="F" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                  <Text text="E" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                  <Text text="D" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                  <Text text="C" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                  <Text text="B" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-                  <Text text="A" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-                  <Text text="1" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Text text="2" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                  <Text text="3" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-                  <Text text="4" GridPane.columnIndex="4" GridPane.rowIndex="10" />
-                  <Text text="5" GridPane.columnIndex="5" GridPane.rowIndex="10" />
-                  <Text text="6" GridPane.columnIndex="6" GridPane.rowIndex="10" />
-                  <Text text="7" GridPane.columnIndex="7" GridPane.rowIndex="10" />
-                  <Text text="8" GridPane.columnIndex="8" GridPane.rowIndex="10" />
-                  <Text text="9" GridPane.columnIndex="9" GridPane.rowIndex="10" />
-                  <Text text="10" GridPane.columnIndex="10" GridPane.rowIndex="10" />
+                  <Text text="J" translateX="8.0" GridPane.columnIndex="0" />
+                  <Text text="I" translateX="8.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <Text text="H" translateX="6.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <Text text="G" translateX="6.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <Text text="F" translateX="7.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                  <Text text="E" translateX="7.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                  <Text text="D" translateX="6.0" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                  <Text text="C" translateX="6.0" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                  <Text text="B" translateX="7.0" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                  <Text text="A" translateX="6.0" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                  <Text text="1" translateX="6.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Text text="2" translateX="6.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <Text text="3" translateX="6.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                  <Text text="4" translateX="6.0" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                  <Text text="5" translateX="6.0" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                  <Text text="6" translateX="6.0" GridPane.columnIndex="6" GridPane.rowIndex="10" />
+                  <Text text="7" translateX="6.0" GridPane.columnIndex="7" GridPane.rowIndex="10" />
+                  <Text text="8" translateX="6.0" GridPane.columnIndex="8" GridPane.rowIndex="10" />
+                  <Text text="9" translateX="6.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
+                  <Text text="10" translateX="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
                   <GridPane fx:id="tableroDos1" gridLinesVisible="false" prefHeight="184.0" prefWidth="185.0" style="-fx-background-color:white;" translateY="-90.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <columnConstraints>
-                        <ColumnConstraints />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                         <ColumnConstraints maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
@@ -176,9 +176,6 @@
                         <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
                         <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
                      </rowConstraints>
-                     <padding>
-                        <Insets left="15.0" right="15.0" />
-                     </padding>
                   </GridPane>
                </children>
             </GridPane>
@@ -205,8 +202,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <ListView fx:id="historialDisparos" layoutX="88.0" layoutY="365.0" prefHeight="94.0" prefWidth="492.0" />
-      <Label layoutX="90.0" layoutY="348.0" text="Historial de disparos" />
-      <Button fx:id="botonRetroceder" layoutX="471.0" layoutY="473.0" mnemonicParsing="false" text="Volver hacia atras" />
+      <ListView fx:id="historial" layoutX="87.0" layoutY="423.0" prefHeight="94.0" prefWidth="492.0" />
+      <Label layoutX="91.0" layoutY="396.0" text="Registro de los disparos:" />
+      <Button fx:id="botonRetroceder" layoutX="468.0" layoutY="526.0" mnemonicParsing="false" text="Volver hacia atras" />
+      <Button fx:id="botonRotar" layoutX="168.0" layoutY="358.0" mnemonicParsing="false" text="Rotar barco" />
    </children>
 </AnchorPane>
