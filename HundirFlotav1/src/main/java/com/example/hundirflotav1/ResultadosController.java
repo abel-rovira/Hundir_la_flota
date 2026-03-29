@@ -14,7 +14,8 @@ public class ResultadosController {
 
     private static ObservableList<VerResultados> listaResultados = FXCollections.observableArrayList();
 
-    static {
+    public ResultadosController() {
+        listaResultados = FXCollections.observableArrayList();
         cargarResultados();
     }
 
