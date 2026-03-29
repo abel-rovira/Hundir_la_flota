@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hundirflotav1.VerResultadosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a8d8ff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hundirflotav1.VerResultadosController">
     <children>
         <TableView fx:id="tableResultados" layoutX="51.0" layoutY="85.0" prefHeight="270.0" prefWidth="496.0">
             <columns>
@@ -15,7 +15,7 @@
                 <TableColumn fx:id="colGanador" prefWidth="169.88937377929688" text="Ganador" />
             </columns>
         </TableView>
-        <Label layoutX="217.0" layoutY="28.0" text="RESULTADOS">
+        <Label layoutX="138.0" layoutY="27.0" text="RESULTADOS DE LAS PARTIDAS">
             <font>
                 <Font size="23.0" />
             </font>
