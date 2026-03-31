@@ -16,7 +16,7 @@ El jugador humano se enfrenta a la CPU en un tablero de 10×10. Primero coloca m
 src/
 └── com/example/hundirflotav1/
     ├── base/
-    │   ├── FileManager.java         # Gestor de archivos binarios (serialización)
+    │   ├── FileManager.java         # Gestor de archivos binarios (serializacion)
     │   └── Writable.java            # Clase base serializable
     ├── EstadoJuego.java             # Modelo: estado completo de la partida
     ├── LogicaJuego.java             # Lógica del juego (sin dependencias de UI)
@@ -162,3 +162,6 @@ java --module-path /ruta/javafx/lib --add-modules javafx.controls,javafx.fxml -c
 4. La CPU disparará automáticamente tras cada turno tuyo.
 5. Gana quien hunda todos los barcos del rival primero.
 6. Puedes **guardar** en cualquier momento y **recuperar** la partida más tarde.
+
+
+
